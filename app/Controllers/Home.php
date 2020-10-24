@@ -1,27 +1,24 @@
 <?php namespace App\Controllers;
 
+use CodeIgniter\Controller;
+use App\Models\Barang_model;
 class Home extends BaseController
 {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model("barang_model");
-	}
-
 	public function index()
 	{
 		// return view('welcome_message');
 
-		$data["page"]="menu_gallery_view";
-		$data["config"] = $this->login_model->get_data();
+		$model = new Barang_model();
+		$data['product']  = $model->get()->getResult();
 
-		$list = $this->barang_model->get();
-
-		echo "<pre>";
-		print_r($list);
+		// print_r($model);
+		// die();
+		
+		// // echo "<pre>";
+		print_r($data['product']);
 		die();
-
-		// $this->load->view('list_barang');
+		
+        // echo view('product_view', $data);
 	}
 
 	//--------------------------------------------------------------------

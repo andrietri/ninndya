@@ -1,15 +1,12 @@
-<?php
-
-namespace App\Models;
-
-class Advertising_model extends Model {
-
-    function get()
+<?php namespace App\Models;
+ 
+use CodeIgniter\Model;
+ 
+class Barang_model extends Model
+{
+     
+    public function get()
     {
-        $q = "SELECT * FROM Tbl_barang";
-        
-        $gData = $this->db->query($q);
-        return $gData->result_array();
+        $builder = $this->db->table('Tbl_barang');
+        return $builder->get();
     }
-
-}
